@@ -28,6 +28,9 @@
 [submodule ".vim/bundle/less"]
 	path = .vim/bundle/less
 	url = https://github.com/lunaru/vim-less.git
-[submodule ".vim/bundle/XML-Folding"]
-	path = .vim/bundle/XML-Folding
+[submodule ".vim/bundle/misc"]
+	path = .vim/bundle/misc
+	url = https://github.com/xolox/vim-misc.git
+[submodule ".vim/bundle/XML-folding"]
+	path = .vim/bundle/XML-folding
 	url = git://github.com/vim-scripts/XML-Folding.git
