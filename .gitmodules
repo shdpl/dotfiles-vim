@@ -1,3 +1,33 @@
 [submodule ".vim/bundle/YankRing.vim"]
 	path = .vim/bundle/YankRing.vim
 	url = https://github.com/vim-scripts/YankRing.vim.git
+[submodule ".vim/bundle/easytags"]
+	path = .vim/bundle/easytags
+	url = https://github.com/xolox/vim-easytags.git
+[submodule ".vim/bundle/snipmate"]
+	path = .vim/bundle/snipmate
+	url = https://github.com/shdpl/snipmate.vim.git
+[submodule ".vim/bundle/syntastic"]
+	path = .vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule ".vim/bundle/ack"]
+	path = .vim/bundle/ack
+	url = git://github.com/mileszs/ack.vim.git
+[submodule ".vim/bundle/ctrlp"]
+	path = .vim/bundle/ctrlp
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule ".vim/bundle/d"]
+	path = .vim/bundle/d
+	url = git://github.com/JesseKPhillips/d.vim.git
+[submodule ".vim/bundle/tagbar"]
+	path = .vim/bundle/tagbar
+	url = https://github.com/majutsushi/tagbar.git
+[submodule ".vim/bundle/css3-syntax"]
+	path = .vim/bundle/css3-syntax
+	url = https://github.com/hail2u/vim-css3-syntax.git
+[submodule ".vim/bundle/less"]
+	path = .vim/bundle/less
+	url = https://github.com/lunaru/vim-less.git
+[submodule ".vim/bundle/XML-Folding"]
+	path = .vim/bundle/XML-Folding
+	url = git://github.com/vim-scripts/XML-Folding.git
