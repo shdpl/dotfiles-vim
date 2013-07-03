@@ -109,9 +109,9 @@ if has("autocmd")
 	autocmd FileType less set makeprg=lessc\ %
 	autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 	autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-"	autocmd FileType php set makeprg=php\ %
-"	autocmd FileType php let g:php_folding=2
-"	autocmd FileType php set foldmethod=syntax
+	autocmd FileType php set makeprg=php\ %
+	autocmd FileType php let g:php_folding=2
+	autocmd FileType php set foldmethod=syntax
 	autocmd FileType c set omnifunc=ccomplete#Complete
 	autocmd BufNewFile,BufRead *.di setfiletype d
 	autocmd FileType d set foldmethod=syntax
