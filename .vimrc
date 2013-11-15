@@ -19,12 +19,16 @@ else
 	set backupdir=/tmp//
 endif
 set viewdir=/tmp//
+
 set history=50
 set ruler
 set number
 set showcmd
 set incsearch
 set cursorline
+
+set wildmenu
+set wildmode=list:longest,full
 
 set nowrap
 
@@ -56,6 +60,9 @@ if &wrap
 	nnoremap <down> gj
 	nnoremap <up> gk
 endif
+
+map <C-up> <C-Y>
+map <C-down> <C-E>
 
 nnoremap <A-down> :m .+1<CR>==
 nnoremap <A-up> :m .-2<CR>==
@@ -136,8 +143,8 @@ if has("autocmd")
 
 	if version >= 703
 		autocmd InsertEnter * set relativenumber
+		autocmd InsertLeave * set norelativenumber 
 	endif
-	autocmd InsertLeave * set number
 
 	autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 	autocmd InsertLeave * if pumvisible() == 0|pclose|endif
@@ -146,6 +153,7 @@ if has("autocmd")
 else
 	set autoindent
 endif
+
 
 if &t_Co > 2 || has("gui_running")
 	syntax on
@@ -160,6 +168,7 @@ endif
 
 call pathogen#infect()
 
+let g:easytags_suppress_ctags_warning = 1
 let g:syntastic_mode_map = { 'mode': 'active',
 	\ 'active_filetypes': ['d'],
 	\ 'passive_filetypes': ['html'] }
