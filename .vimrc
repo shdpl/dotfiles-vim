@@ -81,6 +81,12 @@ if $COLORTERM == 'gnome-terminal'
 	set t_Co=256
 endif
 
+if executable("/bin/bash")
+	set shell=/bin/bash
+elseif executable("/bin/sh")
+	set shell=/bin/sh
+endif
+
 function CloseCPair()
 	:inoremap ( ()<ESC>i
 	:inoremap ) <c-r>=ClosePair(')')<CR>
