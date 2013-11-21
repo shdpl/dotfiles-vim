@@ -24,6 +24,7 @@ set history=50
 set ruler
 set number
 set showcmd
+set relativenumber
 set incsearch
 set cursorline
 
@@ -35,7 +36,6 @@ set nowrap
 set cindent
 set noexpandtab
 set copyindent
-"set preserveindent
 set softtabstop=0
 set shiftwidth=2
 set tabstop=2
@@ -96,41 +96,46 @@ function CloseCPair()
 	:inoremap ] <c-r>=ClosePair(']')<CR>
 endf
 
-function ClosePair(char)
-	if getline('.')[col('.') - 1] == a:char
-		return "\<Right>"
-	else
-		return a:char
-	endif
-endf
-
 if has("autocmd")
 	filetype plugin indent on
 
 	augroup vimrcEx
 	au!
 
+	function ClosePair(char)
+		if getline('.')[col('.') - 1] == a:char
+			return "\<Right>"
+		else
+			return a:char
+		endif
+	endf
+	function FileTypeD()
+		set foldmethod=syntax
+		call CloseCPair()
+		let s:tlist_def_d_settings = 'd;n:namespace;v:variable;d:macro;t:typedef;c:class;g:enum;s:struct;u:union;f:function'
+	endfunction
+	function FileTypePhp()
+		set omnifunc=phpcomplete#CompletePHP
+		set makeprg=php\ %
+		let g:php_folding=2
+		set foldmethod=syntax
+	endfunction
+	function FileTypeXml()
+		setlocal equalprg="XMLLINT_INDENT=$'\t' xmllint --format --recover - 2>/dev/null"
+		set omnifunc=xmlcomplete#CompleteTags
+	endfunction
 
 	autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
-	autocmd FileType xml setlocal equalprg="XMLLINT_INDENT=$'\t' xmllint --format --recover - 2>/dev/null"
 
 	autocmd FileType python set omnifunc=pythoncomplete#Complete
 	autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 	autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 	autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 	autocmd FileType less set makeprg=lessc\ %
-	autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-	autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-	autocmd FileType php set makeprg=php\ %
-	autocmd FileType php let g:php_folding=2
-	autocmd FileType php set foldmethod=syntax
 	autocmd FileType c set omnifunc=ccomplete#Complete
-	autocmd BufNewFile,BufRead *.di setfiletype d
-	autocmd FileType d set foldmethod=syntax
-	autocmd FileType d compiler dmd
-	autocmd FileType d call CloseCPair()
-	autocmd FileType d let s:tlist_def_d_settings = 'd;n:namespace;v:variable;d:macro;t:typedef;c:class;g:enum;s:struct;u:union;f:function'
+	autocmd FileType xml call FileTypeXml()
+	autocmd FileType php call FileTypePhp()
+	autocmd FileType d call FileTypeD()
 
 	highlight ExtraWhitespace ctermbg=red guibg=red
 	let s:matcher
@@ -146,11 +151,6 @@ if has("autocmd")
 	autocmd BufWinEnter *.* silent loadview
 
 	autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
-
-	if version >= 703
-		autocmd InsertEnter * set relativenumber
-		autocmd InsertLeave * set norelativenumber 
-	endif
 
 	autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 	autocmd InsertLeave * if pumvisible() == 0|pclose|endif
@@ -172,10 +172,10 @@ if !exists(":DiffOrig")
 	command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
 endif
 
-call pathogen#infect()
-
 let g:easytags_suppress_ctags_warning = 1
 let g:syntastic_mode_map = { 'mode': 'active',
 	\ 'active_filetypes': ['d'],
 	\ 'passive_filetypes': ['html'] }
 let g:ctrlp_root_markers = ['src']
+
+call pathogen#infect()

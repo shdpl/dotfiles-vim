@@ -43,3 +43,6 @@
 [submodule ".vim/bundle/vimshell"]
 	path = .vim/bundle/vimshell
 	url = git@github.com:Shougo/vimshell.vim.git
+[submodule ".vim/bundle/unstack"]
+	path = .vim/bundle/unstack
+	url = git@github.com:mattboehm/vim-unstack.git
