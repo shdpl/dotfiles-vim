@@ -22,7 +22,6 @@ set viewdir=/tmp//
 
 set history=50
 set ruler
-set number
 set showcmd
 set relativenumber
 set incsearch

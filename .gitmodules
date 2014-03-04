@@ -46,3 +46,6 @@
 [submodule ".vim/bundle/unstack"]
 	path = .vim/bundle/unstack
 	url = git@github.com:mattboehm/vim-unstack.git
+[submodule ".vim/bundle/makeshift"]
+	path = .vim/bundle/makeshift
+	url = https://github.com/johnsyweb/vim-makeshift.git
