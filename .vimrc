@@ -159,18 +159,6 @@ else
 	set autoindent
 endif
 
-
-if &t_Co > 2 || has("gui_running")
-	syntax on
-	set hlsearch
-	nmap <silent> ,/ :nohlsearch<CR>
-	color jellybeans
-endif
-
-if !exists(":DiffOrig")
-	command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
-endif
-
 let g:easytags_suppress_ctags_warning = 1
 let g:syntastic_mode_map = { 'mode': 'active',
 	\ 'active_filetypes': ['d'],
@@ -178,3 +166,14 @@ let g:syntastic_mode_map = { 'mode': 'active',
 let g:ctrlp_root_markers = ['src']
 
 call pathogen#infect()
+
+if &t_Co > 2 || has("gui_running")
+	syntax on
+	set hlsearch
+	nmap <silent> ,/ :nohlsearch<CR>
+	colorscheme jellybeans
+endif
+
+if !exists(":DiffOrig")
+	command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
+endif
