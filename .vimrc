@@ -23,7 +23,9 @@ set viewdir=/tmp//
 set history=50
 set ruler
 set showcmd
-set relativenumber
+if version >= 703
+	set relativenumber
+endif
 set incsearch
 set cursorline
 
@@ -80,10 +82,8 @@ if $COLORTERM == 'gnome-terminal'
 	set t_Co=256
 endif
 
-if executable("/bin/bash")
-	set shell=/bin/bash
-elseif executable("/bin/sh")
-	set shell=/bin/sh
+if &shell =~# 'fish$'
+	set shell=sh
 endif
 
 function CloseCPair()
@@ -135,6 +135,7 @@ if has("autocmd")
 	autocmd FileType xml call FileTypeXml()
 	autocmd FileType php call FileTypePhp()
 	autocmd FileType d call FileTypeD()
+	au BufRead,BufNewFile *.dt		set filetype=jade
 
 	highlight ExtraWhitespace ctermbg=red guibg=red
 	let s:matcher
