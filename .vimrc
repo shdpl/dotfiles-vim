@@ -72,8 +72,14 @@ inoremap <A-up> <Esc>:m .-2<CR>==gi
 vnoremap <A-down> :m '>+1<CR>gv=gv
 vnoremap <A-up> :m '<-2<CR>gv=gv
 
-nnoremap <silent> <A-left> :tabp<CR>
-nnoremap <silent> <A-right> :tabn<CR>
+nnoremap th  :tabfirst<CR>
+nnoremap tj  :tabnext<CR>
+nnoremap tk  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+nnoremap tt  :tabedit<Space>
+nnoremap tn  :tabnext<Space>
+nnoremap tm  :tabm<Space>
+nnoremap td  :tabclose<CR>
 
 imap <C-Space> <C-x><C-o>
 imap <C-@> <C-Space>
@@ -136,6 +142,9 @@ if has("autocmd")
 	autocmd FileType php call FileTypePhp()
 	autocmd FileType d call FileTypeD()
 	au BufRead,BufNewFile *.dt		set filetype=jade
+	autocmd BufRead,BufNewFile *.dt		set filetype=jade
+	autocmd FileType fish set makeprg=fish\ %
+	autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
 
 	highlight ExtraWhitespace ctermbg=red guibg=red
 	let s:matcher
@@ -178,3 +187,9 @@ endif
 if !exists(":DiffOrig")
 	command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
 endif
+
+let g:easytags_suppress_ctags_warning = 1
+let g:syntastic_mode_map = { 'mode': 'active',
+	\ 'active_filetypes': ['d'],
+	\ 'passive_filetypes': ['html'] }
+let g:ctrlp_root_markers = ['src', '.git', 'source']
