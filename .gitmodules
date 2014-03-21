@@ -67,3 +67,6 @@
 [submodule ".vim/bundle/tabular"]
 	path = .vim/bundle/tabular
 	url = https://github.com/godlygeek/tabular.git
+[submodule ".vim/bundle/systemd"]
+	path = .vim/bundle/systemd
+	url = https://github.com/kurayama/systemd-vim-syntax.git
