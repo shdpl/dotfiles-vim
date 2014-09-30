@@ -70,3 +70,18 @@
 [submodule ".vim/bundle/systemd"]
 	path = .vim/bundle/systemd
 	url = https://github.com/kurayama/systemd-vim-syntax.git
+[submodule ".vim/bundle/nix"]
+	path = .vim/bundle/nix
+	url = git@github.com:MarcWeber/vim-addon-nix.git
+[submodule ".vim/bundle/mw-utils"]
+	path = .vim/bundle/mw-utils
+	url = git@github.com:MarcWeber/vim-addon-mw-utils.git
+[submodule ".vim/bundle/goto-thing-at-cursor"]
+	path = .vim/bundle/goto-thing-at-cursor
+	url = git@github.com:MarcWeber/vim-addon-goto-thing-at-cursor.git
+[submodule ".vim/bundle/completion"]
+	path = .vim/bundle/completion
+	url = git@github.com:MarcWeber/vim-addon-completion.git
+[submodule ".vim/bundle/actions"]
+	path = .vim/bundle/actions
+	url = git@github.com:MarcWeber/vim-addon-actions.git
