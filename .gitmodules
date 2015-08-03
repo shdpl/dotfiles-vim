@@ -85,3 +85,6 @@
 [submodule ".vim/bundle/actions"]
 	path = .vim/bundle/actions
 	url = git@github.com:MarcWeber/vim-addon-actions.git
+[submodule ".vim/bundle/python-mode"]
+	path = .vim/bundle/python-mode
+	url = https://github.com/klen/python-mode.git
