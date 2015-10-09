@@ -91,3 +91,6 @@
 [submodule ".vimperator/plugin"]
 	path = .vimperator/plugin
 	url = https://github.com/ervandew/vimperator-plugins.git
+[submodule ".vim/bundle/python-mode"]
+	path = .vim/bundle/python-mode
+	url = https://github.com/klen/python-mode.git
