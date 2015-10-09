@@ -1,0 +1,4 @@
+set hintchars=hjklasdfgyuiopqwertnmzxcvb
+colorscheme desert
+set gui=none
+nnoremap F ;w
