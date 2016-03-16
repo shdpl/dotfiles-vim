@@ -193,3 +193,4 @@ let g:syntastic_mode_map = { 'mode': 'active',
 	\ 'active_filetypes': ['d'],
 	\ 'passive_filetypes': ['html'] }
 let g:ctrlp_root_markers = ['src', '.git', 'source']
+let g:ackprg = 'ag --nogroup --nocolor --column'

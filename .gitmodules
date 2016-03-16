@@ -94,3 +94,6 @@
 [submodule ".vim/bundle/go"]
 	path = .vim/bundle/go
 	url = git@github.com:fatih/vim-go.git
+[submodule ".vim/bundle/coffee-script"]
+	path = .vim/bundle/coffee-script
+	url = git@github.com:kchmck/vim-coffee-script.git
