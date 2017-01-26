@@ -1,1 +1,0 @@
-/home/shd/dotfiles-vim/.vimrc
