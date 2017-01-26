@@ -31,6 +31,7 @@ set cursorline
 
 set wildmenu
 set wildmode=list:longest,full
+set wildignore+=*/dist/*,*/node_modules/*,*.so,*.swp,*.zip
 
 set nowrap
 
@@ -132,6 +133,7 @@ if has("autocmd")
 
 	autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
+	autocmd FileType sh set makeprg=sh\ %
 	autocmd FileType python set omnifunc=pythoncomplete#Complete
 	autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 	autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
@@ -141,6 +143,7 @@ if has("autocmd")
 	autocmd FileType xml call FileTypeXml()
 	autocmd FileType php call FileTypePhp()
 	autocmd FileType d call FileTypeD()
+	autocmd FileType yaml set expandtab
 	au BufRead,BufNewFile *.dt		set filetype=jade
 	autocmd BufRead,BufNewFile *.dt		set filetype=jade
 	autocmd FileType fish set makeprg=fish\ %
@@ -170,10 +173,17 @@ else
 endif
 
 let g:easytags_suppress_ctags_warning = 1
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'mode': 'active',
-	\ 'active_filetypes': ['d'],
+	\ 'active_filetypes': ['d','yaml'],
 	\ 'passive_filetypes': ['html'] }
-let g:ctrlp_root_markers = ['src']
 
 call pathogen#infect()
 
@@ -192,5 +202,5 @@ let g:easytags_suppress_ctags_warning = 1
 let g:syntastic_mode_map = { 'mode': 'active',
 	\ 'active_filetypes': ['d'],
 	\ 'passive_filetypes': ['html'] }
-let g:ctrlp_root_markers = ['src', '.git', 'source']
+let g:ctrlp_root_markers = ['src', '.git', 'source', 'package.json']
 let g:ackprg = 'ag --nogroup --nocolor --column'
